@@ -1,0 +1,18 @@
+[package]
+name = "wl-gammactl-rust"
+version = "0.1.0"
+edition = "2024"
+resolver = "2"
+
+[[bin]]
+name = "wl-gammactl-rust"
+path = "src/main.rs"
+
+[dependencies]
+wayland-client = "0.31"
+wayland-protocols-wlr = { version = "0.3", features = ["client"] }
+eframe = { version = "0.29", default-features = false, features = ["wayland", "x11", "glow"] }
+egui = "0.29"
+clap = { version = "4", features = ["derive"] }
+tempfile = "3"
+anyhow = "1"
