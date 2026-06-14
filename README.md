@@ -18,7 +18,7 @@ yay -S wl-gammactl-rust
 git clone https://github.com/Lecer69/wl-gammactl-rust
 cd wl-gammactl-rust
 cargo build --release
-sudo cp target/release/wl-gammactl-rust /usr/local/bin/wl-gammactl
+sudo cp target/release/wl-gammactl-rust /usr/local/bin/wl-gammactl-rust
 ```
 
 ## Usage
