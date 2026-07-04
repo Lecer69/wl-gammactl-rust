@@ -4,6 +4,12 @@ A simple tool to adjust contrast, brightness, gamma, and saturation on Wayland o
 
 Inspired by [wl-gammactl](https://github.com/mischw/wl-gammactl/).
 
+> **Note:** This only supports Hyprland (and other wlroots-based compositors via `wlr-gamma-control-unstable-v1`). KDE and GNOME are not supported, as they don't implement this protocol.
+
+## Requirements
+
+- [Cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html) (Rust's build tool/package manager)
+
 ## Installation
 
 ### From AUR
@@ -15,6 +21,7 @@ yay -S wl-gammactl-rust
 ### From source
 
 ```bash
+cd /tmp
 git clone https://github.com/Lecer69/wl-gammactl-rust
 cd wl-gammactl-rust
 cargo build --release
