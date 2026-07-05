@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=wl-gammactl-rust
+Comment=Adjust contrast, brightness, gamma, and saturation on Wayland outputs
+Exec=wl-gammactl-rust
+Icon=wl-gammactl-rust
+Terminal=false
+Categories=Utility;Settings;
+Keywords=gamma;brightness;contrast;saturation;wayland;hyprland;display;
+StartupNotify=true

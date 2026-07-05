@@ -26,6 +26,8 @@ git clone https://github.com/Lecer69/wl-gammactl-rust
 cd wl-gammactl-rust
 cargo build --release
 sudo cp target/release/wl-gammactl-rust /usr/local/bin/wl-gammactl-rust
+sudo cp wl-gammactl-rust.desktop /usr/local/share/applications/wl-gammactl-rust.desktop
+sudo cp icon.png /usr/local/share/pixmaps/wl-gammactl-rust.png
 ```
 
 ## Usage
