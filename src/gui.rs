@@ -1,6 +1,6 @@
 use eframe::egui::{self, Color32, Margin, RichText, Slider, Stroke, Vec2};
 
-use crate::gamma::Params;
+use crate::gamma::{Params, MAX_TEMPERATURE, MIN_TEMPERATURE};
 
 pub struct App {
     params: Params,
@@ -35,15 +35,17 @@ impl eframe::App for App {
             slider(ui, "Brightness", &mut self.params.brightness, 0.0, 2.0);
             slider(ui, "Gamma", &mut self.params.gamma, 0.1, 5.0);
             slider(ui, "Saturation", &mut self.params.saturation, 0.0, 2.0);
+            temperature_slider(ui, &mut self.params.temperature);
 
             ui.add_space(12.0);
 
             let cmd = format!(
-                "wl-gammactl-rust -c {:.3} -b {:.3} -g {:.3} -s {:.3}",
+                "wl-gammactl-rust -c {:.3} -b {:.3} -g {:.3} -s {:.3} -t {:.0}",
                 self.params.contrast,
                 self.params.brightness,
                 self.params.gamma,
                 self.params.saturation,
+                self.params.temperature,
             );
             ui.label(
                 RichText::new(&cmd)
@@ -71,6 +73,21 @@ fn slider(ui: &mut egui::Ui, label: &str, value: &mut f64, min: f64, max: f64) {
             Slider::new(value, min..=max)
                 .step_by(0.001)
                 .fixed_decimals(3),
+        );
+    });
+    ui.add_space(4.0);
+}
+
+fn temperature_slider(ui: &mut egui::Ui, value: &mut f64) {
+    ui.horizontal(|ui| {
+        ui.label(RichText::new(format!("{:<12}", "Temperature")).monospace());
+        ui.add(
+            Slider::new(value, MIN_TEMPERATURE..=MAX_TEMPERATURE)
+                .logarithmic(true)
+                .smallest_positive(MIN_TEMPERATURE)
+                .step_by(10.0)
+                .fixed_decimals(0)
+                .suffix(" K"),
         );
     });
     ui.add_space(4.0);

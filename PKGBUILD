@@ -1,7 +1,7 @@
 pkgname=wl-gammactl-rust
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Change contrast, brightness, gamma & saturation on Wayland"
+pkgdesc="Change contrast, brightness, gamma, saturation & color temperature on Wayland"
 arch=('x86_64')
 url="https://github.com/Lecer69/wl-gammactl-rust"
 license=('Unlicense')

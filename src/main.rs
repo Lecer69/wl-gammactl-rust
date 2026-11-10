@@ -5,7 +5,6 @@ mod wayland;
 
 use anyhow::Result;
 use clap::Parser;
-use gamma::Params;
 use std::sync::{Arc, Mutex};
 
 fn main() -> Result<()> {
@@ -15,13 +14,7 @@ fn main() -> Result<()> {
 
     if args.has_values() && !args.gui {
         // cli mode
-        let params = Params {
-            contrast:   args.contrast.unwrap_or(1.0),
-            brightness: args.brightness.unwrap_or(1.0),
-            gamma:      args.gamma.unwrap_or(1.0),
-            saturation: args.saturation.unwrap_or(1.0),
-        };
-        wl.apply(&params, &mut queue)?;
+        wl.apply(&args.params(), &mut queue)?;
 
         // Keep connection alive
         loop {
@@ -30,12 +23,7 @@ fn main() -> Result<()> {
         }
     }
 
-    let initial = Params {
-        contrast: args.contrast.unwrap_or(1.0),
-        brightness: args.brightness.unwrap_or(1.0),
-        gamma: args.gamma.unwrap_or(1.0),
-        saturation: args.saturation.unwrap_or(1.0),
-    };
+    let initial = args.params();
 
     let wl = Arc::new(Mutex::new(wl));
     let queue = Arc::new(Mutex::new(queue));
@@ -43,7 +31,7 @@ fn main() -> Result<()> {
     let options = eframe::NativeOptions {
         viewport: eframe::egui::ViewportBuilder::default()
             .with_title("wl-gammactl-rust")
-            .with_inner_size([420.0, 240.0])
+            .with_inner_size([420.0, 270.0])
             .with_resizable(false),
         ..Default::default()
     };

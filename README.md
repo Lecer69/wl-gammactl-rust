@@ -1,6 +1,6 @@
 # wl-gammactl-rust
 
-A simple tool to adjust contrast, brightness, gamma, and saturation on Wayland outputs.
+A simple tool to adjust contrast, brightness, gamma, saturation, and color temperature on Wayland outputs.
 
 Inspired by [wl-gammactl](https://github.com/mischw/wl-gammactl/).
 
@@ -41,7 +41,7 @@ wl-gammactl-rust
 ### CLI
 
 ```bash
-wl-gammactl-rust -c 1.5 -b 1.2 -g 1.0 -s 1.0
+wl-gammactl-rust -c 1.5 -b 1.2 -g 1.0 -s 1.0 -t 4500
 ```
 
 Options:
@@ -49,6 +49,7 @@ Options:
 - `-b, --brightness <FLOAT>` — Brightness (default: 1.0)
 - `-g, --gamma <FLOAT>` — Gamma (default: 1.0)
 - `-s, --saturation <FLOAT>` — Saturation (default: 1.0)
+- `-t, --temperature <KELVIN>` — Color temperature, 1700–25000 (default: 6500, neutral). Lower is warmer, higher is cooler.
 
 ## License
 
