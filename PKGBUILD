@@ -10,6 +10,7 @@ makedepends=('cargo')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Lecer69/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('bed0182ac859317ff5c2c8aa3e2b0a94774b5bc771814d32cef951aae52e8391')
+options=('!debug')
 
 build() {
     cd "$pkgname-$pkgver"
