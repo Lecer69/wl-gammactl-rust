@@ -14,7 +14,7 @@ jobs:
   aur:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
 
       - name: Set pkgver from tag
         run: |
@@ -35,9 +35,13 @@ jobs:
         with:
           pkgname: wl-gammactl-rust
           pkgbuild: ./PKGBUILD
+          assets: wl-gammactl-rust.install
           updpkgsums: true
           test: true
           test_flags: --clean --cleanbuild --syncdeps --noconfirm
+          # With `assets` set, the action commits with `git add --all`. Drop the
+          # downloaded source tarball and built packages so only these reach the AUR.
+          post_process: git clean -fdx -e PKGBUILD -e .SRCINFO -e wl-gammactl-rust.install
           commit_username: ${{ secrets.AUR_USERNAME }}
           commit_email: ${{ secrets.AUR_EMAIL }}
           ssh_private_key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}

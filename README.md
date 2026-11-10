@@ -25,10 +25,22 @@ cd /tmp
 git clone https://github.com/Lecer69/wl-gammactl-rust
 cd wl-gammactl-rust
 cargo build --release
-sudo install -Dm755 target/release/wl-gammactl-rust /usr/bin/wl-gammactl-rust
-sudo install -Dm644 wl-gammactl-rust.desktop /usr/share/applications/wl-gammactl-rust.desktop
-sudo install -Dm644 wl-gammactl-rust.png /usr/share/pixmaps/wl-gammactl-rust.png
+sudo install -Dm755 target/release/wl-gammactl-rust /usr/local/bin/wl-gammactl-rust
+sudo install -Dm644 wl-gammactl-rust.desktop /usr/local/share/applications/wl-gammactl-rust.desktop
+sudo install -Dm644 wl-gammactl-rust.png /usr/local/share/pixmaps/wl-gammactl-rust.png
 ```
+
+### Switching from a source install to the AUR package
+
+A source install in `/usr/local` takes priority over the AUR package, so remove it first:
+
+```bash
+sudo rm -f /usr/local/bin/wl-gammactl-rust \
+           /usr/local/share/applications/wl-gammactl-rust.desktop \
+           /usr/local/share/pixmaps/wl-gammactl-rust.png
+```
+
+The AUR package also prints this command if it finds an old install.
 
 ## Usage
 
